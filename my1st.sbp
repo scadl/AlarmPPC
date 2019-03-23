@@ -1,0 +1,49 @@
+﻿version
+5.50
+0
+Form1
+1
+1
+0
+0
+0
+1
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+238
+268
+
+0
+0
+0
+Sub designer
+
+addform(Form1,"Form1","",220,220,220)@
+addlabel(form1,Label1,70,90,75,25,"Всё хорошо",220,220,220,0,150,0,True,False,9)@
+addbutton(form1,Button1,70,15,75,23,"Щёлкни",212,208,200,0,0,0,True,True,9)@
+End Sub
+@EndOfDesignText@Sub Globals
+	'Declare the global variables here.
+
+End Sub
+
+Sub App_Start
+	Form1.Show
+End Sub
+
+
+Sub Button1_Click
+label1.Visible=true
+End Sub

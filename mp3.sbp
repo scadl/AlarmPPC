@@ -1,0 +1,167 @@
+﻿version
+5.50
+0
+Alarm
+1
+3
+0
+0
+1
+5
+3
+0
+1
+2
+0
+0
+0
+4
+1
+0
+0
+3
+0
+0
+238
+268
+I:\[Programming]\Act.ICO
+1
+FMODDesktop.dll
+1
+FMODDevice.dll
+1
+fmod:FMOD
+Sub designer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+addform(Alarm,"alarm","",0,0,0)@
+addlabel(alarm,Label2,55,20,90,30,"00:00:00",0,0,0,128,255,0,True,True,15)@
+addpanel(alarm,Panel3,0,20,175,30,0,0,0,True,True)@
+addtextbox(alarm,TextBox1,180,-3,60,22,"00:00:00",0,0,0,128,128,255,True,True,False,9)@
+addtimer(alarm,Timer2,185,115,500)@
+addlabel(alarm,Label5,10,210,105,20,"Please, select file",0,0,0,255,0,0,True,True,9)@
+addlabel(alarm,Label4,0,0,240,20,"Enter Alarm time as 00:00:00 -->",0,0,0,255,255,255,True,True,9)@
+addimagebutton(alarm,ImageButton3,100,155,40,40,"",212,208,200,0,0,0,"cStretchImage","s.bmp",True,True,True,9)@
+addimagebutton(alarm,ImageButton2,55,155,40,40,"",212,208,200,0,0,0,"cStretchImage","p.bmp",True,True,True,9)@
+addimagebutton(alarm,ImageButton1,10,155,40,40,"",212,208,200,0,0,0,"cStretchImage","o.bmp",True,True,True,9)@
+addtimer(alarm,Timer1,185,85,1000)@
+addlabel(alarm,Label1,160,235,52,20,"N/A",0,0,0,128,255,128,True,True,13)@
+addopendialog(alarm,OpenDialog1,190,55,All Files|*.*)@
+addimage(alarm,back,0,0,240,270,"cCenterImage","background.bmp",245,245,220,True,True)@
+End Sub
+@EndOfDesignText@Sub Globals
+b=false
+End Sub
+
+Sub App_Start
+alarm.show
+fmod.new1
+timer1.Enabled=true
+timer2.Enabled=true
+label1.FontSize=13
+label2.FontSize=15
+
+End Sub
+
+Sub Timer1_Tick
+If opendialog1.File="" Then 
+
+Else 
+label5.FontColor=0,255,0
+label5.Text="File selected, OK" 
+End If
+
+If b=true Then 
+label1.Text=Format(fmod.Position / fmod.Length1 * 100,"n0") & "%" 
+Else
+label1.Text="N/A"
+End If
+
+TimeFormat("HH:mm:ss")
+label2.Text=Time(Now) 
+End Sub
+
+Sub ImageButton1_Click
+If opendialog1.Show  <> ccancel Then 
+End If
+End Sub
+
+Sub ImageButton2_Click
+fmod.Play(opendialog1.File)
+label1.Text=Format(fmod.LengthMs/1000/60,"n0")
+b=true
+End Sub
+
+Sub ImageButton3_Click
+fmod.Stop1
+b=false
+End Sub
+
+Sub Timer2_Tick
+TimeFormat("HH:mm:ss")
+If textbox1.Text = Time(Now) Then imagebutton2_click
+End Sub

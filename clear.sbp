@@ -1,0 +1,90 @@
+﻿version
+5.50
+0
+Form1
+1
+2
+0
+0
+0
+8
+0
+0
+0
+3
+0
+0
+0
+0
+0
+0
+3
+0
+0
+0
+238
+268
+
+1
+ProgressBar.dll
+1
+ProgressBar.dll
+1
+progressbar:ProgressBar
+Sub designer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+addform(Form1,"Cleaning ","",211,211,211)@
+addlabel(form1,Label8,45,85,180,90,"Label8",211,211,211,0,0,0,True,True,9)@
+addarraylist(form1,alfolders,75,70,60,55)@
+addlabel(form1,Label7,160,35,70,30,"folders with some files",211,211,211,0,0,0,True,True,9)@
+addlabel(form1,Label6,140,35,25,25,"0",211,211,211,0,0,0,True,True,9)@
+addlabel(form1,Label5,110,35,30,30,"files;",211,211,211,0,0,0,True,True,9)@
+addbutton(form1,Button2,125,10,110,20,"CLEAR DEVICE",212,208,200,0,0,0,True,True,9)@
+addlabel(form1,Label2,90,35,25,25,"0",211,211,211,0,0,0,True,True,9)@
+addarraylist(form1,alfiles,10,70,55,60)@
+addlabel(form1,Label1,5,35,85,20,"Junk in device:",211,211,211,0,0,0,True,True,9)@
+addbutton(form1,Button1,5,10,115,20,"Find junk files",212,208,200,0,0,0,True,True,9)@
+End Sub
+@EndOfDesignText@Sub Globals
+
+End Sub
+
+Sub App_Start
+ Form1.show
+ 'progressBar.New1("Form1",10,70,210,15)
+End Sub
+
+Sub Button1_Click
+a=FileSearch(alfiles,"\temp")
+label6.Text=dirsearch(alfolders,"\temp")
+
+for i=0 to alfolders.Count do b=fileseach(alfiles,alfolders.Item(i))
+
+label2.Text=b+a
+End Sub
+
+

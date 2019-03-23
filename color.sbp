@@ -1,0 +1,169 @@
+﻿version
+5.50
+0
+MainForm
+1
+15
+0
+1
+0
+6
+0
+0
+1
+1
+0
+0
+0
+2
+0
+0
+0
+0
+0
+0
+238
+268
+
+0
+0
+0
+Sub designer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+addform(MainForm,"Color puzzle","",211,211,211)@
+addlabel(mainform,Label6,10,115,220,20,"-------------------------------------------------------",211,211,211,0,0,0,True,True,9)@
+addnum(mainform,Num,170,165,60,5,255,211,211,211,True,True)@
+addtimer(mainform,Timer1,195,110,50)@
+addbutton(mainform,bub,220,135,20,20,"+",0,0,255,255,255,255,True,True,9)@
+addbutton(mainform,bv,185,135,35,20,"211",212,208,200,0,0,255,False,True,9)@
+addbutton(mainform,bdb,165,135,20,20,"-",0,0,255,255,255,255,True,True,9)@
+addbutton(mainform,gub,140,135,20,20,"+",0,150,0,255,255,255,True,True,9)@
+addbutton(mainform,gv,105,135,35,20,"211",212,208,200,0,150,0,False,True,9)@
+addbutton(mainform,gdb,85,135,20,20,"-",0,150,0,255,255,255,True,True,9)@
+addbutton(mainform,rub,60,135,20,20,"+",255,0,0,255,255,255,True,True,9)@
+addbutton(mainform,rv,25,135,35,20,"211",212,208,200,255,0,0,False,True,9)@
+addbutton(mainform,rdb,5,135,20,20,"-",255,0,0,255,255,255,True,True,9)@
+addlabel(mainform,Label5,15,75,210,45,"How do you think, what part of Red, Green and Blue in color, which CPU fought about?",211,211,211,0,0,0,True,True,9)@
+addlabel(mainform,Label4,10,165,160,20,"This is your color: Jump level",211,211,211,0,0,0,True,True,9)@
+addbutton(mainform,PColor,10,185,220,30,"",211,211,211,0,0,0,False,True,9)@
+addlabel(mainform,Label3,10,215,220,20,"-------------------------------------------------------",211,211,211,0,0,0,True,True,9)@
+addbutton(mainform,Button2,40,235,160,20,"Make a new color riddle",212,208,200,0,0,0,True,True,9)@
+addlabel(mainform,Label2,10,65,220,20,"-------------------------------------------------------",211,211,211,0,0,0,True,True,9)@
+addlabel(mainform,Label1,35,10,175,20,"CPU: I'm thought of this color:",211,211,211,0,0,0,True,True,9)@
+addbutton(mainform,QColor,10,30,220,30,"",211,211,211,0,0,0,False,True,9)@
+End Sub
+@EndOfDesignText@Sub Globals
+r=255
+g=255
+b=255
+End Sub
+
+Sub App_Start
+ MainForm.show
+r=rnd(0,255)
+g=rnd(0,255)
+b=rnd(0,255)
+qcolor.Color=r,g,b
+rv.Text=rnd(0,255)
+gv.Text=rnd(0,255)
+bv.Text=rnd(0,255)
+timer1.Enabled=true
+qcolor.Color=255-r,255-g,225-b
+End Sub
+
+Sub Button2_Click
+app_start
+End Sub
+
+Sub Timer1_Tick
+pcolor.Color=rv.Text,gv.Text,bv.Text
+
+if rv.Text=r then rv.Enabled=true 
+if rv.Text=r then rdb.Enabled=false 
+if rv.Text=r then rub.Enabled=false 
+
+if gv.Text=g then gv.Enabled=true 
+if gv.Text=g then gdb.Enabled=false 
+if gv.Text=g then gub.Enabled=false 
+
+if bv.Text=b then bv.Enabled=true 
+if bv.Text=b then bdb.Enabled=false 
+if bv.Text=b then bub.Enabled=false 
+
+num.Minimum=1
+'label6.Text=r&","&g&","&b
+End Sub
+
+Sub rdb_Click
+rv.Text=rv.Text-num.Value
+if rv.Text<0 then rv.Text=0
+End Sub
+
+Sub rub_Click
+rv.Text=rv.Text+num.Value
+if rv.Text>255 then rv.Text=255
+End Sub
+
+Sub gdb_Click
+gv.Text=gv.Text-num.Value
+if gv.Text<0 then gv.Text=0
+End Sub
+
+Sub gub_Click
+gv.Text=gv.Text+num.Value
+if gv.Text>255 then gv.Text=255
+End Sub
+
+Sub bdb_Click
+bv.Text=bv.Text-num.Value
+if bv.Text<0 then bv.Text=0
+End Sub
+
+Sub bub_Click
+bv.Text=bv.Text+num.Value
+if bv.Text>255 then bv.Text=255
+End Sub
+
+Sub rv_Click
+if rv.Text=r then qcolor.Text=qcolor.Text & "Red: " & rv.Text & "; "
+End Sub
+
+Sub gv_Click
+if gv.Text=g then qcolor.Text=qcolor.Text & "Green: " & gv.Text & "; "
+End Sub
+
+Sub bv_Click
+if bv.Text=b then qcolor.Text=qcolor.Text & "Blue: " & bv.Text & "; "
+End Sub
